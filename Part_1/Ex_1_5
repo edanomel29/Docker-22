@@ -1,0 +1,47 @@
+Size is 83MB (ubuntu) vs 15.7MB (alpine).
+➜  ~ docker pull devopsdockeruh/simple-web-service:ubuntu
+ubuntu: Pulling from devopsdockeruh/simple-web-service
+5d3b2c2d21bb: Pull complete
+3fc2062ea667: Pull complete
+75adf526d75b: Pull complete
+965d4bbb586a: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:d44e1dce398732e18c7c2bad9416a072f719af33498302b02929d4c112e88d2a
+Status: Downloaded newer image for devopsdockeruh/simple-web-service:ubuntu
+docker.io/devopsdockeruh/simple-web-service:ubuntu
+➜  ~ docker pull devopsdockeruh/simple-web-service:alpine
+alpine: Pulling from devopsdockeruh/simple-web-service
+ba3557a56b15: Pull complete
+1dace236434b: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:dd4d367476f86b7d7579d3379fe446ae5dfce25480903fb0966fc2e5257e0543
+Status: Downloaded newer image for devopsdockeruh/simple-web-service:alpine
+docker.io/devopsdockeruh/simple-web-service:alpine
+➜  ~ docker images
+REPOSITORY                          TAG       IMAGE ID       CREATED         SIZE
+devopsdockeruh/simple-web-service   ubuntu    4e3362e907d5   11 months ago   83MB
+devopsdockeruh/simple-web-service   alpine    fd312adc88e0   11 months ago   15.7MB
+
+Confirmed that the functionality is the same:
+➜  ~ docker run -d --name alpine devopsdockeruh/simple-web-service:alpine
+1d4ae1cc02b1befb0f22d8cb6aa31a47a1719bca4f94bdb0e9813455e5d22a30
+➜  ~ docker exec -it alpine sh
+/usr/src/app # tail -f ./text.log
+2022-02-08 08:32:13 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2022-02-08 08:32:15 +0000 UTC
+2022-02-08 08:32:17 +0000 UTC
+2022-02-08 08:32:19 +0000 UTC
+2022-02-08 08:32:21 +0000 UTC
+2022-02-08 08:32:23 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2022-02-08 08:32:25 +0000 UTC
+2022-02-08 08:32:27 +0000 UTC
+2022-02-08 08:32:29 +0000 UTC
+2022-02-08 08:32:31 +0000 UTC
+2022-02-08 08:32:33 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2022-02-08 08:32:35 +0000 UTC
+2022-02-08 08:32:37 +0000 UTC
+^C
+/usr/src/app # exit
